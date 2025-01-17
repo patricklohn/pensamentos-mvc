@@ -6,6 +6,7 @@ const flash = require('express-flash')
 
 // import routes
 const toughtsRoute = require("./routes/toughtsRoutes")
+const authRoute = require("./routes/authRoutes")
 
 // import controller
 const ToughtController = require('./controllers/ToughtsController')
@@ -33,6 +34,8 @@ app.use(
 app.use(express.json())
 
 app.use('/toughts', toughtsRoute)
+app.get('/', authRoute)
+
 app.get('/', ToughtController.showToughts)
 
 // session middleware
