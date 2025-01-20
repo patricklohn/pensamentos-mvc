@@ -4,27 +4,19 @@ const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const flash = require('express-flash')
 
-// import routes
-const toughtsRoute = require("./routes/toughtsRoutes")
-const authRoute = require("./routes/authRoutes")
-
-// import controller
-const ToughtController = require('./controllers/ToughtsController')
-
 const app = express()
 const port = 3000;
 
 const conn = require('./db/conn')
 
 // Models 
-
 const User = require('./models/User')
 const Tought = require('./models/Tought')
 
+// handlebars
 app.engine('handlebars', exphs.engine())
 app.set('view engine', 'handlebars')
 
-// receber resposta do body
 app.use(
     express.urlencoded({
         extended: true
@@ -33,10 +25,12 @@ app.use(
 
 app.use(express.json())
 
-app.use('/toughts', toughtsRoute)
-app.get('/', authRoute)
+// import routes
+const toughtsRoute = require("./routes/toughtsRoutes")
+const authRoute = require("./routes/authRoutes")
 
-app.get('/', ToughtController.showToughts)
+// import controller
+const ToughtController = require('./controllers/ToughtsController')
 
 // session middleware
 app.use(
@@ -63,6 +57,12 @@ app.use(flash())
 
 // public path
 app.use(express.static('public'))
+
+// caminho das rotas
+app.use('/toughts', toughtsRoute)
+app.use('/', authRoute)
+
+app.get('/', ToughtController.showToughts)
 
 // set session to res
 app.use((req, res, next) => {

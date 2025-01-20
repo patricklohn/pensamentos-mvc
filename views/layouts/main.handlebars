@@ -20,11 +20,15 @@
         </ul>
     </nav>
     <div class="container">
-        {{!-- Mensagens --}}
-        {{{body}}}
-    </div>
+        {{#if messages.message}}
+            <div class="messages">
+                {{messages.message}}
+            </div>
+        {{/if}}
+     {{{body}}}
     <footer>
         <p><span>Pensamentos</span> &copy; 2025</p>
     </footer>
+    </div>
 </body>
 </html>
