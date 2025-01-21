@@ -75,8 +75,8 @@ app.use('/', authRoute)
 app.get('/', ToughtController.showToughts)
 
 conn
-//.sync()
-.sync({force: true})
+.sync()
+//.sync({force: true})
 .then(()=>{
     app.listen(port)
 }).catch((err) => console.log(err))
