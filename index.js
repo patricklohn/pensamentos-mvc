@@ -13,6 +13,13 @@ const conn = require('./db/conn')
 const User = require('./models/User')
 const Tought = require('./models/Tought')
 
+// import routes
+const toughtsRoute = require("./routes/toughtsRoutes")
+const authRoute = require("./routes/authRoutes")
+
+// import controller
+const ToughtController = require('./controllers/ToughtsController')
+
 // handlebars
 app.engine('handlebars', exphs.engine())
 app.set('view engine', 'handlebars')
@@ -24,13 +31,6 @@ app.use(
 )
 
 app.use(express.json())
-
-// import routes
-const toughtsRoute = require("./routes/toughtsRoutes")
-const authRoute = require("./routes/authRoutes")
-
-// import controller
-const ToughtController = require('./controllers/ToughtsController')
 
 // session middleware
 app.use(
@@ -58,26 +58,25 @@ app.use(flash())
 // public path
 app.use(express.static('public'))
 
+// set session to res
+app.use((req, res, next) => {
+  
+    if (req.session.useruuid) {
+      res.locals.session = req.session;
+    }
+  
+    next();
+  });
+
 // caminho das rotas
 app.use('/toughts', toughtsRoute)
 app.use('/', authRoute)
 
 app.get('/', ToughtController.showToughts)
 
-// set session to res
-app.use((req, res, next) => {
-
-    if(req.session.userid){
-        res.locals.session = req.session
-    }
-
-    next()
-
-})
-
 conn
-.sync()
-//.sync({force: true})
+//.sync()
+.sync({force: true})
 .then(()=>{
     app.listen(port)
 }).catch((err) => console.log(err))

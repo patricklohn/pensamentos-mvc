@@ -37,14 +37,29 @@ module.exports = class AuthController {
         const user = {
             name,
             email,
-            password: hashedPassword,
+            senha: hashedPassword,
         }
 
         try{
-            await User.create(user)
+            const createUser = await User.create(user);
+
+            // initialize session 
+            // req.session.useruuid = createUser.dataValues.uuid;
+            req.session.useruuid = createUser.uuid;
+
             req.flash('message', 'Cadastro realizado com sucesso!')
+
+            req.session.save(()=>{
+                res.redirect('/')
+            })
+
         }catch(err){
             console.log(err)
         }
+    }
+
+    static logout(req,res){
+        req.session.destroy()
+        res.redirect('/login')
     }
 }
