@@ -17,7 +17,13 @@ module.exports = class ToughtController {
 
         const toughts = user.Toughts.map((result)=> result.dataValues)
 
-        res.render('toughts/dashboard', {toughts})
+        let emptyToughts = false 
+
+        if(toughts.length === 0){
+            emptyToughts = true
+        }
+
+        res.render('toughts/dashboard', {toughts, emptyToughts})
     }
 
     static createTought(req,res){
@@ -61,5 +67,14 @@ module.exports = class ToughtController {
             console.log(err)
         }
 
+    }
+
+    static async updateTought(req,res){
+        const id = req.params.id; 
+
+        const tought = await Tought.findOne({where: {id:id}, raw:true})
+        console.log(tought)
+
+        res.render('toughts/edit', {tought})
     }
 }

@@ -165,7 +165,7 @@ form input[type='submit']:hover,
 
 .dashboard li{
     padding: 12px;
-    border-bottom: 1pc solid #f6982d;
+    border-bottom: 1px solid #f6982d;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -185,6 +185,10 @@ form input[type='submit']:hover,
     color: #fff;
     border-color: #fff;
     margin: 0 0.5em;
+}
+
+.dashboard a{
+    color: #f6982d;
 }
 
 /*Footer*/
