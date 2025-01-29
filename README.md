@@ -1,13 +1,13 @@
 # Pensamentos MVC
 
-![Logo do Projeto](https://via.placeholder.com/150)
+<!-- ![Logo do Projeto](https://via.placeholder.com/150) -->
 
 ## Índice
 
 - [Descrição do Projeto](#descrição-do-projeto)
 - [Status do Projeto](#status-do-projeto)
 - [Funcionalidades](#funcionalidades)
-- [Demonstração da Aplicação](#demonstração-da-aplicação)
+<!-- - [Demonstração da Aplicação](#demonstração-da-aplicação) -->
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Pré-requisitos](#pré-requisitos)
 - [Como Rodar o Projeto](#como-rodar-o-projeto)
@@ -19,7 +19,8 @@ O "Pensamentos MVC" é uma aplicação web desenvolvida para que os usuários po
 
 ## Status do Projeto
 
-![Badge em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
+<!-- ![Badge em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow) -->
+![Badge em Desenvolvimento](https://img.shields.io/badge/Status-Finalizado-green)
 
 ## Funcionalidades
 
@@ -29,9 +30,9 @@ O "Pensamentos MVC" é uma aplicação web desenvolvida para que os usuários po
 - Visualização de pensamentos de outros usuários
 - Dashboard personalizado para cada usuário
 
-## Demonstração da Aplicação
+<!-- ## Demonstração da Aplicação
 
-![Gif de Demonstração](https://via.placeholder.com/500x300)
+![Gif de Demonstração](https://via.placeholder.com/500x300) -->
 
 ## Tecnologias Utilizadas
 
